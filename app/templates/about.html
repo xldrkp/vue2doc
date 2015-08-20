@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+            <div class="inner cover">
+                <h1 class="cover-heading">VUE Converter</h1>
+
+                <p class="lead">This tool converts a <a href="http://vue.tufts.edu/" style="text-decoration: underline">VUE concept map</a> to HTML, Markdown, PDF and Libre-/OpenOffice ODT. Compared to the native export and print function of VUE it nicely outputs notes inside nodes and links.<br><a href="/" style="text-decoration:underline">Give it a try!</a></p>
+                <p class="lead">This first version will <b>not</b>:</p>
+                <ul style="text-align: left; width: 70%; margin-left: 15%">
+                  <li>show your image resources. Instead it shows a cat instead of the real image</li>
+                  <li>show a screenshot of your map. This will be possible soon.</li>
+                </ul>
+                <p class="lead">Features to come:</p>
+                <ul style="text-align: left; width: 70%; margin-left: 15%">
+                  <li>Upload of a zip file that contains image resources and a screenshot of the map.</li>
+                  <li>Build a references list from sources in the notes.</li>
+                </ul>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <a href="{{ url_for('index') }}" class="btn btn-default">Convert a map!</a>
+              </div>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a
+                            href="https://twitter.com/mdo">@mdo</a>.</p>
+                </div>
+            </div>
+
+{% endblock %}

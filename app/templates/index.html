@@ -1,0 +1,42 @@
+{% extends 'base.html' %} {% block content %}
+
+<div class="inner cover">
+  {% for message in get_flashed_messages(with_categories=True) %}
+  <div class="alert alert-{{ message[0] }}" role="alert">{{ message[1] }}</div>
+  {% endfor %}
+  <h1 class="cover-heading">Upload Your Concept Map!</h1>
+
+  <p class="lead">Decide on a title and select the *.vue file to upload. Then just wait a second and download *.html, *.pdf, *.markdown and *.odt.</p>
+
+  <form class="form-horizontal" action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="post">
+    <div class="form-group">
+      <label for="inputTitle" class="col-sm-2 control-label">Title</label>
+      <div class="col-sm-9">
+        <input type="text" name="title" class="form-control" id="inputTitle" placeholder="will be used as the title of the map.">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputFile" class="col-sm-2 control-label">Map</label>
+      <div style="width: 502px; padding-left: 15px" class="fileinput fileinput-new input-group" data-provides="fileinput">
+        <div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i>
+          <span class="fileinput-filename"></span>
+        </div>
+        <span class="input-group-addon btn btn-default btn-file">
+          <span class="fileinput-new">Select file</span>
+          <span class="fileinput-exists">Change</span>
+          <input type="file" name="file" id="inputFile">
+        </span>
+        <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-1 col-sm-10">
+        <button type="submit" class="btn btn-default">Upload!</button>
+      </div>
+    </div>
+  </form>
+
+
+</div>
+
+{% endblock %}
