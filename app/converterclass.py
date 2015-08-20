@@ -1,7 +1,7 @@
 # This Python file uses the following encoding: utf-8
 
 """ Converter for VUE Concept Maps
-    Converts the contents of a VUE concept map to a markdown file
+    Converts the contents of a VUE concept map to various document formats
     by printing the notes of nodes and links.
 
     This script makes use of the PyQuery library
@@ -163,9 +163,7 @@ class Converter():
         conv = label.encode('ascii', 'xmlcharrefreplace')
         regex = re.compile(r'\n', re.MULTILINE)
         clean = regex.sub(' ', conv)
-        print(clean)
         return clean
-        # return conv.replace('\n', ' ')
 
     def get_label_for_link(self, l):
         """ Reads the label text of a node
@@ -175,11 +173,9 @@ class Converter():
         label = self.d(l).attr('label')
         # Convert form unicode to ascii
         conv = label.encode('ascii', 'xmlcharrefreplace')
-        # TODO This yet is not satisfying!
         regex = re.compile(r'\n', re.MULTILINE)
         clean = regex.sub(' ', conv)
         return clean
-        # return conv.replace('\n', ' ')
 
     def get_pdf_of_map(self):
         """ Checks if a PDF of the map exists. If there is one,
@@ -259,24 +255,20 @@ class Converter():
         return 0
 
     def convert2pdf(self):
-        # self.convert2markdown()
         subprocess.call(
             ['pandoc', '-s', os.path.join(self.folders['downloads'], self.timestamp, self.markdown_filename),
                        '-o', os.path.join(self.folders['downloads'], self.timestamp, self.pdf_filename)])
 
     def convert2html(self):
-        # self.convert2markdown()
         subprocess.call(
             ['pandoc', '-s', os.path.join(self.folders['downloads'], self.timestamp, self.markdown_filename),
                        '-o', os.path.join(self.folders['downloads'], self.timestamp, self.html_filename)])
 
     def convert2odt(self):
-        # self.convert2markdown()
         subprocess.call(
             ['pandoc', '-s', os.path.join(self.folders['downloads'], self.timestamp, self.markdown_filename),
                        '-o', os.path.join(self.folders['downloads'], self.timestamp, self.odt_filename)])
 
-    #
     # Helper functions for file operations
 
     def extract_filetype(self, filename):

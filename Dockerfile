@@ -7,5 +7,4 @@ RUN easy_install -U setuptools
 RUN sudo pip install -r requirements.txt
 USER www-data
 EXPOSE 8000
-# CMD ["python", "vue2doc.py"]
 CMD ["/usr/bin/gunicorn", "-c", "gunicorn_config.py", "vue2doc:app"]

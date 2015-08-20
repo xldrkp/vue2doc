@@ -1,6 +1,6 @@
 # vue2doc
 
-This tool converts a VUE concept map to various formats (Markdown, PDF, HTML, OPT).
+This tool converts a VUE concept map to various formats (Markdown, PDF, HTML, ODT).
 
 ## Docker Deployment - Client Side
 
