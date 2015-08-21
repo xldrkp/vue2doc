@@ -30,9 +30,9 @@ class FlaskAppTestCase(unittest.TestCase):
         time.sleep(1)
         rv = self.app.post('/upload',
                            data=dict(
-                           title=('Concept Map'), file=(io.BytesIO("this is a test"), 'test.zip'),
+                           title=('Concept Map'), file=(io.BytesIO("this is a test"), 'test.vpk'),
                            ), follow_redirects=True)
-        self.assertIn('Alright, dude!', rv.data)
+        self.assertIn('Alright!', rv.data)
 
     @unittest.skip('')
     def test_06_download_pdf(self):

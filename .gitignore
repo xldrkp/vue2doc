@@ -58,3 +58,5 @@ uploads/
 downloads/
 nosetests.json
 .noseids
+
+*.vpk

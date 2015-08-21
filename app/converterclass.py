@@ -33,7 +33,7 @@ class Converter():
         self.pdfmap_filename = "ConceptMapScreenshot.pdf"
         self.caption_pdfmap = "Concept Map"
         self.pandoc_path = '/usr/bin/pandoc'
-        self.ALLOWED_EXTENSIONS = set(['vue', 'zip'])
+        self.ALLOWED_EXTENSIONS = set(['vue', 'vpk'])
         self.UPLOAD_FOLDER = self.folders['uploads']
         self.DOWNLOAD_FOLDER = self.folders['downloads']
         self.d = pq(filename=self.folders[
