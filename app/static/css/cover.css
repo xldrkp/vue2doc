@@ -48,6 +48,7 @@ body {
 .site-wrapper-inner {
   display: table-cell;
   vertical-align: top;
+  position: relative;
 }
 .cover-container {
   margin-right: auto;
@@ -111,6 +112,7 @@ body {
 
 .cover {
   padding: 0 20px;
+  margin-top: -155px;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -160,4 +162,13 @@ body {
   .cover-container {
     width: 700px;
   }
+}
+
+#star {
+  position: relative;
+  top: 70px;
+  left: 540px;
+  background: url('../img/VUE-on-steroids.png') no-repeat;
+  width: 155px;
+  height: 155px;
 }

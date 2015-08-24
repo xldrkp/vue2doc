@@ -1,12 +1,13 @@
 {% extends 'base.html' %} {% block content %}
 
 <div class="inner cover">
+                    <div id="star"></div>
   {% for message in get_flashed_messages(with_categories=True) %}
   <div class="alert alert-{{ message[0] }}" role="alert">{{ message[1] }}</div>
   {% endfor %}
   <h1 class="cover-heading">Upload Your Concept Map!</h1>
 
-  <p class="lead">Decide on a title and select the *.vue file to upload. Then just wait a second and download *.html, *.pdf, *.markdown and *.odt.</p>
+  <p class="lead">Decide on a title and select the *.vue file to upload. Then just wait a second and download HTML, PDF, Markdown and ODT!</p>
 
   <form class="form-horizontal" action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="post">
     <div class="form-group">

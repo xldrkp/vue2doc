@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 744.09448819 1052.3622047"
+   id="svg2"
+   version="1.1"
+   inkscape:version="0.91 r"
+   sodipodi:docname="vue-on-steroids.svg">
+  <defs
+     id="defs4" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="158.00742"
+     inkscape:cy="905.90916"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="1055"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       sodipodi:type="star"
+       style="opacity:1;fill:#ab0303;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:2.42199993;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path4139"
+       sodipodi:sides="12"
+       sodipodi:cx="249.94052"
+       sodipodi:cy="182.30273"
+       sodipodi:r1="79.322801"
+       sodipodi:r2="39.661401"
+       sodipodi:arg1="0.72353032"
+       sodipodi:arg2="0.98532971"
+       inkscape:flatsided="false"
+       inkscape:rounded="0"
+       inkscape:randomized="0"
+       d="m 309.39083,234.81718 -37.53388,-19.45848 3.31183,42.14803 -22.77606,-35.61848 -18.20588,38.15719 -1.91541,-42.23454 -34.84535,23.94215 19.45848,-37.53389 -42.14804,3.31183 35.61848,-22.77606 -38.15718,-18.20588 42.23454,-1.91541 -23.94215,-34.84535 37.53388,19.45848 -3.31183,-42.14803 22.77606,35.61847 18.20589,-38.15718 1.9154,42.23454 34.84535,-23.94215 -19.45847,37.53389 42.14803,-3.31184 -35.61848,22.77606 38.15718,18.20589 -42.23453,1.91541 z"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
+    <flowRoot
+       xml:space="preserve"
+       id="flowRoot4141"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:11.30137444px;line-height:125%;font-family:Slackey;-inkscape-font-specification:Slackey;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       transform="matrix(0.67844635,0.14413008,-0.14413008,0.67844635,69.97921,2.1632188)"
+       inkscape:transform-center-x="5.4496125"
+       inkscape:transform-center-y="3.4679326"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><flowRegion
+         id="flowRegion4143"><rect
+           id="rect4145"
+           width="217.5"
+           height="106.78571"
+           x="197.5"
+           y="173.07649"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Slackey;-inkscape-font-specification:Slackey" /></flowRegion><flowPara
+         id="flowPara4149"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:100%;font-family:Slackey;-inkscape-font-specification:Slackey;text-align:center;text-anchor:middle;fill:#fffe9b;fill-opacity:1">VUE</flowPara><flowPara
+         id="flowPara4153"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:20px;line-height:100%;font-family:Slackey;-inkscape-font-specification:Slackey;text-align:center;text-anchor:middle;fill:#fffe9b;fill-opacity:1">on steroids!</flowPara></flowRoot>  </g>
+</svg>

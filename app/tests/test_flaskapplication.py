@@ -30,7 +30,7 @@ class FlaskAppTestCase(unittest.TestCase):
         time.sleep(1)
         rv = self.app.post('/upload',
                            data=dict(
-                           title=('Concept Map'), file=(io.BytesIO("this is a test"), 'test.vpk'),
+                           title=('Concept Map'), file=(io.BytesIO("this is a test"), 'test.zip'),
                            ), follow_redirects=True)
         self.assertIn('Alright!', rv.data)
 
