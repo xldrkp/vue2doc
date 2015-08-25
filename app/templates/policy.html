@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+            <div class="inner cover" id="policy">
+                <h1 class="cover-heading">VUE Converter</h1>
+
+                <p class="lead">This tool is run by <a href="http://itab-hh.de/de/institut/mitarbeiter/axel-duerkop" style="text-decoration: underline">Axel Dürkop</a>. Your data is being stored for the process of conversion and deleted afterwards. You upload it voluntarily.</p>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <a href="{{ url_for('index') }}" class="btn btn-default">Convert a map!</a>
+              </div>
+            </div>
+
+            <div class="mastfoot">
+                <div class="inner">
+                    <p>Cover template for <a href="http://getbootstrap.com">Bootstrap</a>, by <a
+                            href="https://twitter.com/mdo">@mdo</a>.</p>
+                </div>
+            </div>
+
+{% endblock %}

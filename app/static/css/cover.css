@@ -53,6 +53,7 @@ body {
 .cover-container {
   margin-right: auto;
   margin-left: auto;
+  margin-top: 150px;
 }
 
 /* Padding for spacing */
@@ -60,6 +61,14 @@ body {
   padding: 30px;
 }
 
+#about.cover .lead {
+  font-size: 14px;
+}
+
+#about.cover {
+
+  margin-top: -100px;
+}
 
 /*
  * Header
@@ -112,7 +121,7 @@ body {
 
 .cover {
   padding: 0 20px;
-  margin-top: -155px;
+  margin-top: -290px;
 }
 .cover .btn-lg {
   padding: 10px 20px;

@@ -104,10 +104,9 @@ class Converter():
         image = self.d(n).children('child')
         if image and image.attr('xsi:type') == 'image':
 
-            # Just for dummy purposes until the unpacking of
-            # zip folders works
-            # filename = image.children('resource').attr('spec')
-            filename = '/app/assets/cat.png'
+            # Strips off the absolute path from the user's OS
+            filename = os.path.join(self.UPLOAD_FOLDER, self.timestamp,
+                                    os.path.basename(image.children('resource').attr('spec')))
             title = image.children('resource').children('title').text()
             title_extension_stripped = os.path.splitext(title)[0]
             # text = 'Siehe Abb. @fig:%s \n\n![%s](%s) %s\n\n' % (
@@ -259,7 +258,7 @@ class Converter():
 
     def convert2pdf(self):
         subprocess.call(
-            ['pandoc', '-s', os.path.join(self.folders['downloads'], self.timestamp, self.markdown_filename),
+            ['pandoc', '-s', '-V papersize:a4paper -V geometry:margin=.5in -V lang:german -V documentclass:book', os.path.join(self.folders['downloads'], self.timestamp, self.markdown_filename),
                        '-o', os.path.join(self.folders['downloads'], self.timestamp, self.pdf_filename)])
 
     def convert2html(self):

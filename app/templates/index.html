@@ -7,7 +7,7 @@
   {% endfor %}
   <h1 class="cover-heading">Upload Your Concept Map!</h1>
 
-  <p class="lead">Decide on a title and select the *.vue file to upload. Then just wait a second and download HTML, PDF, Markdown and ODT!</p>
+  <p class="lead">Decide on a title and select the *.vue or *.vpk file to upload. Then just wait a second and download HTML, PDF, Markdown and ODT!</p>
 
   <form class="form-horizontal" action="{{ url_for('upload_file') }}" enctype="multipart/form-data" method="post">
     <div class="form-group">
@@ -29,6 +29,7 @@
         </span>
         <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
       </div>
+      <p style="margin-left: 60px">Upload flat *.vue files or VUE packages (*.vpk) containing image resources.</p>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-1 col-sm-10">
