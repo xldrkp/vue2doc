@@ -152,7 +152,7 @@ class TestConverter(unittest.TestCase):
         self.assertTrue(os.path.exists(self.c.DOWNLOAD_FOLDER))
 
     def test_extract_filetype(self):
-        assert self.c.extract_filetype("file.zip") in self.c.ALLOWED_EXTENSIONS
+        assert self.c.extract_filetype("file.vpk") in self.c.ALLOWED_EXTENSIONS
         assert self.c.extract_filetype("file.vue") in self.c.ALLOWED_EXTENSIONS
         self.assertIs(self.c.extract_filetype("file"), False)
 
@@ -178,3 +178,11 @@ class TestConverter(unittest.TestCase):
         self.assertEquals(self.c.get_label_for_linked_node('30'), expected)
         expected = "Die Webseite wird nach Benutzeranforderungen je- weils neu generiert"
         self.assertEquals(self.c.get_label_for_linked_node('59'), expected)
+
+    def test_unpack(self):
+        self.c.timestamp = '1234567890'
+        self.c.unpack()
+
+    def test_test_on_vdr_folder(self):
+        self.c.timestamp = '1234567890'
+        self.assertEquals(self.c.test_on_vdr_folder(), True)

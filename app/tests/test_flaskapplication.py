@@ -18,7 +18,7 @@ class FlaskAppTestCase(unittest.TestCase):
         rv = self.app.get('/')
         self.assertIn('VUE', rv.data)
 
-    # @unittest.skip('')
+    @unittest.skip('')
     def test_05_upload(self):
 
         # Upload a dummy .vue file...
@@ -26,11 +26,12 @@ class FlaskAppTestCase(unittest.TestCase):
                            data=dict(
                            title=('Concept Map'), file=(io.BytesIO("this is a test"), 'test.vue'),
                            ), follow_redirects=True)
-        # Upload a dummy .zip file...
+        self.assertIn('Alright!', rv.data)
+        # Upload a dummy .vpk file...
         time.sleep(1)
         rv = self.app.post('/upload',
                            data=dict(
-                           title=('Concept Map'), file=(io.BytesIO("this is a test"), 'test.zip'),
+                           title=('Concept Map'), file=(io.BytesIO("this is a test"), 'test.vpk'),
                            ), follow_redirects=True)
         self.assertIn('Alright!', rv.data)
 

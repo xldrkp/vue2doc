@@ -16,6 +16,8 @@ import re
 import shutil
 import time
 import subprocess
+import zipfile
+import glob
 from pyquery import PyQuery as pq
 
 
@@ -36,8 +38,9 @@ class Converter():
         self.ALLOWED_EXTENSIONS = set(['vue', 'vpk'])
         self.UPLOAD_FOLDER = self.folders['uploads']
         self.DOWNLOAD_FOLDER = self.folders['downloads']
-        self.d = pq(filename=self.folders[
-                    'uploads'] + '/' + self.timestamp + '/' + self.filename, parser='html')
+        self.path_to_uploaded_file = self.folders[
+            'uploads'] + '/' + self.timestamp + '/' + self.filename
+        self.d = pq(filename=self.path_to_uploaded_file, parser='html')
 
     def clean_text(self, dirty_string):
         """ First of all cleans line breaks from notes with regex
@@ -312,3 +315,34 @@ class Converter():
     def save_upload(self, filename, file):
         path = os.path.join(self.UPLOAD_FOLDER, self.timestamp, filename)
         file.save(path)
+
+    def unpack(self):
+        path = self.folders[
+            'uploads'] + '/' + self.timestamp + '/' + self.timestamp + '.vpk'
+        with zipfile.ZipFile(path) as zf:
+            zf.extractall(self.folders[
+                          'uploads'] + '/' + self.timestamp + '/')
+            # Find the one folder with the unpacked VUE data
+            directory = os.path.join(self.folders[
+                                     'uploads'], self.timestamp)
+            # Find all directories
+            dirs = [f for f in os.listdir(directory)
+                    if os.path.isdir(os.path.join(directory, f))]
+
+            # There should only be one, build the absolute path
+            vdr_dir = os.path.join(directory, dirs[0])
+
+            # Gather all files to be moved one level upwards
+            files_to_move = os.listdir(vdr_dir)
+
+            # Move'em!
+            for f in files_to_move:
+                shutil.move(os.path.join(vdr_dir, f), directory)
+
+            # Delete the .vdr folder
+            shutil.rmtree(vdr_dir)
+
+            # Rename the .vue file inside
+            search_pattern = os.path.join(directory, '*.vue')
+            for v in glob.glob(search_pattern):
+                os.rename(v, os.path.join(directory, '%s.vue' % self.timestamp))

@@ -55,6 +55,7 @@ def upload_file():
         app.logger.info(file)
         try:
             extension = conv.extract_filetype(file.filename)
+            app.logger.info(extension)
             if not extension:
                 raise
             try:
@@ -63,6 +64,8 @@ def upload_file():
                 conv.make_timestamp_directories()
                 try:
                     conv.save_upload(filename, file)
+                    if extension == 'vpk':
+                        conv.unpack()
                     flash('Alright!', category='success')
                     return render_template('done.html', timestamp=timestamp)
                 except:
@@ -73,7 +76,7 @@ def upload_file():
                     'Oops, there was an error! Could not create the upload directory!', category='danger')
                 return redirect(url_for('index'))
         except:
-            flash('Oops, there was an error! Perhaps not a VUE file?', category='danger')
+            flash('Oops, there was an error! Perhaps not a VUE or VPK file?', category='danger')
             return redirect(url_for('index'))
     return render_template('about.html')
 
