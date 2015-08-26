@@ -23,7 +23,7 @@ from pyquery import PyQuery as pq
 
 class Converter():
 
-    def __init__(self, title, folders, timestamp='1234567890'):
+    def __init__(self, title, folders, timestamp):
         self.timestamp = timestamp
         self.filename = '%s.vue' % self.timestamp
         self.folders = folders
@@ -40,6 +40,8 @@ class Converter():
         self.DOWNLOAD_FOLDER = self.folders['downloads']
         self.path_to_uploaded_file = self.folders[
             'uploads'] + '/' + self.timestamp + '/' + self.filename
+
+    def prepare_xml(self):
         self.d = pq(filename=self.path_to_uploaded_file, parser='html')
 
     def clean_text(self, dirty_string):
@@ -297,16 +299,13 @@ class Converter():
         try:
             os.mkdir(os.path.join(self.UPLOAD_FOLDER, self.timestamp))
             os.mkdir(os.path.join(self.DOWNLOAD_FOLDER, self.timestamp))
+            return 0
         except IOError:
             print('There was an error creating the directories!')
+            return 1
         except TypeError:
             print('Wrong type!')
-
-    def create_timestamp(self):
-        """ Returns the current timestamp as a string. The timestamp in a way is the ID for the individual user's conversion process. It has to be stored in a session when used in HTTP context.
-        """
-        self.timestamp = '%s' % int(time.time())
-        return self.timestamp
+            return 1
 
     def unzip(self, filename):
         pass
