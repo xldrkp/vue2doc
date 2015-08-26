@@ -55,8 +55,8 @@ def upload_file():
         session['title'] = title
         file = request.files['file']
 
-        conv = Converter(title, FOLDERS)
-        timestamp = conv.create_timestamp()
+        timestamp = create_timestamp()
+        conv = Converter(title, FOLDERS, timestamp)
 
         app.logger.info(timestamp)
 
@@ -71,7 +71,7 @@ def upload_file():
             try:
                 # Construct the filename from the timestamp and the extension
                 filename = '%s.%s' % (timestamp, extension)
-                conv.make_timestamp_directories()
+                app.logger.debug(conv.make_timestamp_directories())
                 try:
                     conv.save_upload(filename, file)
                     if extension == 'vpk':
@@ -100,6 +100,7 @@ def download_files(type, timestamp):
     else:
         conv = Converter(session['title'], FOLDERS, timestamp)
         download_folder = os.path.join(FOLDERS['downloads'], timestamp)
+        conv.prepare_xml()
         if type == 'pdf':
             conv.convert2markdown()
             try:
@@ -158,6 +159,12 @@ def clean_up(tbd):
         shutil.rmtree(path_up)
     if os.path.exists(path_down):
         shutil.rmtree(path_down)
+
+
+def create_timestamp():
+    """ Returns the current timestamp as a string. The timestamp in a way is the ID for the individual user's conversion process. It has to be stored in a session when used in HTTP context.
+    """
+    return '%s' % int(time.time())
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
