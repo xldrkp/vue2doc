@@ -257,8 +257,8 @@ class Converter():
         return 0
 
     def convert2pdf(self):
-        subprocess.call(
-            ['pandoc', '-s', '-V papersize:a4paper -V geometry:margin=.5in -V lang:german -V documentclass:book', os.path.join(self.folders['downloads'], self.timestamp, self.markdown_filename),
+        subprocess.check_call(
+            ['pandoc', '-s', '-V', 'geometry:margin=2cm', '-V', 'lang:german', os.path.join(self.folders['downloads'], self.timestamp, self.markdown_filename),
                        '-o', os.path.join(self.folders['downloads'], self.timestamp, self.pdf_filename)])
 
     def convert2html(self):
