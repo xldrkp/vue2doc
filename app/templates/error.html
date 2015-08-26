@@ -2,10 +2,15 @@
 
 {% block content %}
             <div class="inner cover">
-                <h1 class="cover-heading">Error!</h1>
+                <h1 class="cover-heading">Oops!!1!</h1>
 
-                <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam architecto aspernatur assumenda consequuntur dolores, et ex facere fugiat fugit laudantium molestiae odio ratione, repellat rerum similique vero voluptatem. Eveniet!</p>
+                <p class="lead">There was an error converting your map. The monks who do the conversion in the background suggest that you try uploading a <b>VUE&nbsp;Package</b> with the extension  <b>*.vpk</b>.</p>
             </div>
+<div class="row" style="margin-top: 30px">
+  <div class="col-md-12">
+    <a href="{{ url_for('index', del=timestamp) }}" class="btn btn-default">Try again!</a>
+  </div>
+</div>
 
             <div class="mastfoot">
                 <div class="inner">

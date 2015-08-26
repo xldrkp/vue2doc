@@ -37,6 +37,11 @@ def about():
     return render_template('about.html')
 
 
+@app.route('/error')
+def error():
+    return render_template('error.html')
+
+
 @app.route('/policy')
 def policy():
     return render_template('policy.html')
@@ -71,7 +76,7 @@ def upload_file():
                     conv.save_upload(filename, file)
                     if extension == 'vpk':
                         conv.unpack()
-                    flash('Alright!', category='success')
+                    flash('That worked!', category='success')
                     return render_template('done.html', timestamp=timestamp)
                 except:
                     flash('Oops, there was an error! Could not save the file!', category='danger')
@@ -97,10 +102,13 @@ def download_files(type, timestamp):
         download_folder = os.path.join(FOLDERS['downloads'], timestamp)
         if type == 'pdf':
             conv.convert2markdown()
-            conv.convert2pdf()
-            filename = '%s.pdf' % timestamp
-            return send_from_directory(download_folder,
-                                       filename, as_attachment=True)
+            try:
+                conv.convert2pdf()
+                filename = '%s.pdf' % timestamp
+                return send_from_directory(download_folder,
+                                           filename, as_attachment=True)
+            except:
+                return redirect(url_for('error'))
         elif type == 'html':
             conv.convert2markdown()
             conv.convert2html()

@@ -4,9 +4,9 @@
   {% for message in get_flashed_messages(with_categories=True) %}
   <div class="alert alert-{{ message[0] }}" role="alert">{{ message[1] }}</div>
   {% endfor %}
-  <h1 class="cover-heading">Done!</h1>
+  <!--<h1 class="cover-heading">That worked!</h1>-->
 
-  <p class="lead">The conversion was successful. Please download the formats you need.</p>
+  <p class="lead">Please download the formats you need.</p>
 
   <div class="row">
     <div class="col-md-3"><a class="btn btn-default" href="{{ url_for('download_files', type='pdf', timestamp=timestamp) }}" role="button">PDF</a></div>
