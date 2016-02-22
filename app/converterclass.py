@@ -18,7 +18,10 @@ import time
 import subprocess
 import zipfile
 import glob
+import logging
 from pyquery import PyQuery as pq
+
+logging.basicConfig(filename='app.log', level=logging.DEBUG)
 
 
 class Converter():
@@ -106,9 +109,22 @@ class Converter():
         image = self.d(n).children('child')
         if image and image.attr('xsi:type') == 'image':
 
-            # Strips off the absolute path from the user's OS
-            filename = os.path.join(self.UPLOAD_FOLDER, self.timestamp,
-                                    os.path.basename(image.children('resource').attr('spec')))
+            # First get the forward slash path of the image's filename
+            properties = image.children('resource').children('property')
+
+            # Look into the node
+            logging.info(properties)
+
+            # As there are more than one properties iterate over them
+            for p in properties:
+                if self.d(p).attr('key') == 'File':
+                    path = self.d(p).attr('value')
+                    break
+
+            # Get the filename as the basename of the path
+            filename = os.path.join(self.UPLOAD_FOLDER, self.timestamp, os.path.basename(path))
+
+            # Used for the image caption
             title = image.children('resource').children('title').text()
             title_extension_stripped = os.path.splitext(title)[0]
             # text = 'Siehe Abb. @fig:%s \n\n![%s](%s) %s\n\n' % (
