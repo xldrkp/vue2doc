@@ -2,6 +2,14 @@
 
 This tool converts a VUE concept map to various formats (Markdown, PDF, HTML, ODT).
 
+## Development
+
+After building the container you need to run it as follows:
+
+    docker run -v $(pwd)/app:/app -p 80:8000 vue
+
+"vue" here is the name of the container. Can be different.
+
 ## Docker Deployment - Client Side
 
 ### Create Docker repo
