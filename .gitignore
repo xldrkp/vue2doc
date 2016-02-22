@@ -60,3 +60,4 @@ nosetests.json
 .noseids
 
 *.vpk
+*.app.log
