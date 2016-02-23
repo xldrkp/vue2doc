@@ -41,6 +41,7 @@ class Converter():
         self.ALLOWED_EXTENSIONS = set(['vue', 'vpk'])
         self.UPLOAD_FOLDER = self.folders['uploads']
         self.DOWNLOAD_FOLDER = self.folders['downloads']
+        self.STATIC = self.folders['static']
         self.path_to_uploaded_file = self.folders[
             'uploads'] + '/' + self.timestamp + '/' + self.filename
 
@@ -112,17 +113,20 @@ class Converter():
             # First get the forward slash path of the image's filename
             properties = image.children('resource').children('property')
 
-            # Look into the node
-            logging.info(properties)
-
             # As there are more than one properties iterate over them
             for p in properties:
-                if self.d(p).attr('key') == 'File':
+                # if self.d(p).attr('key') == 'File':
+                if self.d(p).attr('key') == '@file.relative':
                     path = self.d(p).attr('value')
                     break
 
             # Get the filename as the basename of the path
             filename = os.path.join(self.UPLOAD_FOLDER, self.timestamp, os.path.basename(path))
+
+            # Insert a placeholder image instead if image file cannot
+            # be found or the filename includes bad characters
+            if not self.is_file_existing(filename) or not self.is_filename_clean(os.path.basename(path)):
+                filename = os.path.join(self.STATIC, "img", "no-image.png")
 
             # Used for the image caption
             title = image.children('resource').children('title').text()
@@ -360,3 +364,17 @@ class Converter():
             search_pattern = os.path.join(directory, '*.vue')
             for v in glob.glob(search_pattern):
                 os.rename(v, os.path.join(directory, '%s.vue' % self.timestamp))
+
+    def is_file_existing(self, filename):
+        """ Checks the complete path """
+        return os.path.isfile(filename)
+
+    def is_filename_clean(self, filename):
+        """ Checks the single filename.
+        It is possible that image filenames in a packaged VUE contain
+        $20 as substitution for blanks. These will cause problems in the
+        LaTeX conversion process. If they are found, a placeholder will be shown. """
+        regex = re.compile(r'(%20)+')
+        if regex.search(filename) != None:
+            return False
+        return True

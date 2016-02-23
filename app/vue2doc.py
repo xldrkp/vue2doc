@@ -18,7 +18,8 @@ SECRET_KEY = 'development key'
 app = Flask(__name__)
 FOLDERS = {
     'uploads': os.path.join(app.root_path, 'uploads'),
-    'downloads': os.path.join(app.root_path, 'downloads')}
+    'downloads': os.path.join(app.root_path, 'downloads'),
+    'static': os.path.join(app.root_path, 'static')}
 # Build configuration keys by reading all upper case variables
 app.config.from_object(__name__)
 
