@@ -3,7 +3,7 @@ RUN sudo apt-get update && sudo apt-get -y install pandoc python2.7 python-pip p
 WORKDIR /app
 COPY app /app
 RUN touch /app/app.log
-RUN chmod 775 /app/app.log
+RUN chmod 777 /app/app.log
 RUN mkdir -p /app/uploads /app/downloads
 RUN chown -R www-data.www-data /app/uploads /app/downloads
 RUN easy_install -U setuptools
